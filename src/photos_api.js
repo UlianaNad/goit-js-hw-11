@@ -1,9 +1,10 @@
 import axios from "axios";
 export class PhotosAPI{
     constructor(){
-        this.pageSize = 10;
+        this.pageSize = 42;
         this.page = 1;
         this.query = '';
+        this.maxPage = 1;
     }
 
     async fetchPhotos(){
