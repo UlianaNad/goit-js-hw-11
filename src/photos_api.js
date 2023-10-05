@@ -1,7 +1,7 @@
 import axios from "axios";
 export class PhotosAPI{
     constructor(){
-        this.pageSize = 42;
+        this.pageSize = 40;
         this.page = 1;
         this.query = '';
         this.maxPage = 1;
