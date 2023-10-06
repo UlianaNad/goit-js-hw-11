@@ -1,8 +1,8 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { PhotosAPI } from "./photos_api";
+import { photosTemplate } from './templates';
 
 import SimpleLightbox from "simplelightbox";
-
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const formEl = document.querySelector('.search-form');
@@ -32,15 +32,16 @@ async function onFormSubmit(ev){
     photosAPI.page = 1;
     loadMoreBtnWrapper.innerHTML = '';
 
-    showLoader();
-
     const searchQuery = ev.target.elements.searchQuery.value.trim();
 
     if(!searchQuery){
-        return Notify.info('The search is empty!')
+        gallery.innerHTML = '';
+        loadMoreBtn.classList.add('is-hidden');
+        return Notify.info('The search is empty!');
+    }else{
+        showLoader();
+        photosAPI.query = searchQuery;
     }
-
-    photosAPI.query = searchQuery;
 
     try{
         const photosData = await photosAPI.fetchPhotos();
@@ -92,31 +93,6 @@ async function onLoadMoreBtn(){
         hideLoader();
     }
 }
-
-function photosTemplate(photos){
-    return photos.map(photo => {
-        return` <div class="card shadow-sm g-col-4" style="max-width: 20rem;">
-                    <a class="gallery__link" href="${photo.largeImageURL}">
-                        <img class="card-img-top mt-2" width="100%" height="225" src="${photo.webformatURL}" alt="${photo.tags}" loading="lazy" preserveAspectRatio="xMidYMid slice"focusable="false"/>
-                    </a>
-                    <div class="info d-flex justify-content-between align-items-center">
-                        <p class="info-item text-body-secondary text-center mt-2">
-                            <b>Likes</b>: ${photo.likes}
-                        </p>
-                        <p class="info-item text-body-secondary text-center mt-2">
-                            <b>Views</b>: ${photo.views}
-                        </p>
-                        <p class="info-item text-body-secondary text-center mt-2">
-                            <b>Comments</b>: ${photo.comments}
-                        </p>
-                        <p class="info-item text-body-secondary text-center mt-2">
-                            <b>Downloads</b>: ${photo.downloads}
-                        </p>
-                    </div>
-                </div>`;
-    }).join('');
-}
-
  
 // render info
 function renderPhotos(photos){
