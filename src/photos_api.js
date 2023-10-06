@@ -17,6 +17,8 @@ export class PhotosAPI{
             safesearch: true,
             orientation: "horizontal",
             image_type: "photo",
+            lang: "en",
+            lang: "fi"      
         });
 
         const url = `${BASE_URL}?${PARAMS}`;
