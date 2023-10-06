@@ -14,6 +14,7 @@ html {
     display: none;
     align-items: center;
     justify-content: center;
+    z-index: 5;
 }
 .loader {
     width: 60px;
@@ -51,9 +52,9 @@ body.show-loader .backdrop{
 display: flex;
 }
 .close-icon{
-  fill: rgb(0, 0, 0);
+  fill: rgb(163, 163, 163);
 }
 
 .btn.clear-btn:hover .close-icon{
-  fill: aliceblue;
+  fill: rgb(104, 104, 104);
 }
