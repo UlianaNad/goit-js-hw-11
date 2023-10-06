@@ -50,15 +50,3 @@ html {
 body.show-loader .backdrop{
 display: flex;
 }
-
-.form-control:focus {
-  outline: 0 !important;
-  border-color: initial;
-  box-shadow: none;
-}
-
-.btn-pos {
-  position:relative;
-  z-index:1;
-  left: -36px;
-}
