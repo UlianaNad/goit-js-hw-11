@@ -9,6 +9,7 @@ const formEl = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 const loadMoreBtnWrapper = document.querySelector('.load-more-wrapper');
+const clearBtn = document.querySelector('.clear-btn');
 
 
 const photosAPI = new PhotosAPI();
@@ -140,3 +141,7 @@ function showLoader(){
 function hideLoader(){
     document.body.classList.remove('show-loader');
 }
+
+clearBtn.addEventListener('click', () =>{
+    formEl.elements.searchQuery.value ='';
+})

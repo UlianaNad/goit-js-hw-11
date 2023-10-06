@@ -50,3 +50,10 @@ html {
 body.show-loader .backdrop{
 display: flex;
 }
+.close-icon{
+  fill: rgb(0, 0, 0);
+}
+
+.btn.clear-btn:hover .close-icon{
+  fill: aliceblue;
+}
